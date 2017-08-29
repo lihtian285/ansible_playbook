@@ -1,0 +1,35 @@
+---
+- hosts: test_servers
+  vars:
+#harsh password for "abc123" made by mkpasswd --method=sha-512
+   password: $6$uvOB9lm6Ofd$iCLUEmJFwJTbGcdC2D2oPP4hh4UwbjIbDkNnd0ZgYsFfvryqmkWKW1Js2TlGYxeUCzhgGpvVGQnwTULkucbj00 
+
+  tasks:
+  - name: Test Ping all the Test Servers
+    ping:
+
+  - name: Copy File
+    copy: src=test_copy.txt dest=/home/lihtian
+
+  - name: remove user "test01"
+    become: True
+    become_method: sudo
+    user: 
+     name: test01
+     state: absent
+     remove: yes
+
+  - name: Add user "ansible"
+    become: True
+    become_method: sudo
+    user:
+     name: ansible
+     comment: "Ansible user"
+
+  - name: Update user password for Ansible
+    become: True
+    become_method: sudo
+    user: 
+     name: ansible 
+     password: "{{password}}"
+ 
