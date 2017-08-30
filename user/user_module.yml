@@ -9,7 +9,7 @@
     ping:
 
   - name: Copy File
-    copy: src=test_copy.txt dest=/home/lihtian
+    copy: src=~/test_copy.txt dest=/home/lihtian
 
   - name: remove user "test01"
     become: True
