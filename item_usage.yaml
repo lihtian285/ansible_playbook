@@ -1,4 +1,4 @@
-- name: "Installing VIM"
+- name: "Installing Packages"
   apt: pkg={{ item }} state=installed
   with_items:
   - dnsutils
