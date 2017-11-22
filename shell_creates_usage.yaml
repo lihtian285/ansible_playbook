@@ -1,0 +1,12 @@
+#Module Shell with Parameter "creates"
+
+#Check hosts_backup, if exist the mv command will not run
+- name: "Backup file"
+  shell: creates=/home/linuxadmin/hosts_backup mv /home/linuxadmin/hosts /home/linuxadmin/hosts_backup1
+
+#Change dir to /home/linuxadmin first, then check if hostname2.log exit, if hostname2.log existed, shell command will not be run
+- name: "Check hostname"
+  shell: date >> hostname2.log
+  args:
+   chdir: /home/linuxadmin
+   creates: hostname2.log
