@@ -1,0 +1,13 @@
+#ansible-playbook your.yaml --key-file "yourpath/to_key/ssh.key
+---
+- hosts: infra
+  user: yourusername
+
+  tasks:
+    - name: Create
+      lineinfile:
+       path: /home/dxc-admin/test.txt
+       state: present
+       create: true
+       insertafter: EOF
+       line: 'This is for testing'
