@@ -1,0 +1,22 @@
+---
+- hosts: infra
+  user: yourusername
+  tasks:
+   - name: insert block of lines
+     blockinfile:
+      path: /home/yourpath/test.txt
+      content: |
+        This is line 1
+        This is line 2
+    
+    
+#sample file after executed playbook above
+
+#[yourname@server1 ~]$ cat test.txt
+
+#line 2
+## BEGIN ANSIBLE MANAGED BLOCK
+#This is line 1
+#This is line 2
+## END ANSIBLE MANAGED BLOCK
+
