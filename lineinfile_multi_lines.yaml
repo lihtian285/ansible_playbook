@@ -1,0 +1,15 @@
+---
+- hosts: infra
+  user: yourusername
+
+  tasks:
+    - name: Create
+      lineinfile:
+       path: /home/yourpath/test.txt
+       state: present
+       create: true
+       insertafter: EOF
+       line: '{{ item }}'
+      with_items:
+       - 'line 1'
+       - 'line 2'
