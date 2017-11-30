@@ -6,7 +6,7 @@
   tasks:
     - name: Create
       lineinfile:
-       path: /home/dxc-admin/test.txt
+       path: /home/user/test.txt
        state: present
        create: true
        insertafter: EOF
