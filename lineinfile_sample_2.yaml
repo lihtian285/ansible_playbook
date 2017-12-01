@@ -1,0 +1,25 @@
+#Using lineinfile to search for a line and replace with new line
+#regexp is using python regex
+---
+- hosts: infra
+  user: yourusername
+
+  tasks:
+   - name: Update filter passwd
+     lineinfile:
+        dest: /path/to/nslcd.conf
+        regexp: '^filter passwd'
+        # '^filter passwd' regexp will search this pattern and replace the whole line with new line down below
+        line: "filter passwd (|(gidNumber=1001)(gidNumber=1002)(gidNumber=1003)(uidNumber=1001)(uidNumber-1002))"
+#  tasks:
+   - name: Update filter group
+     lineinfile:
+        dest: /path/to/nslcd.conf
+        regexp: '^filter group'
+        line: "filter group  (|(gidNumber=1001)(gidNumber=1002)(gidNumber=1003)(uidNumber=1001)(uidNumber-1002))"
+#  tasks:
+   - name: Update filter shadow
+     lineinfile:
+        dest: /path/to/nslcd.conf
+        regexp: '^filter shadow'
+        line: "filter shadow (|(gidNumber=1001)(gidNumber=1002)(gidNumber=1003)(uidNumber=1001)(uidNumber-1002))"
