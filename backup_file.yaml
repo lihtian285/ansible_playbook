@@ -12,4 +12,5 @@
        remote_src: yes
        src: /path/to/nslcd.conf
        dest: /path/to/nslcd.conf_{{date}}
+       backup: yes
 
