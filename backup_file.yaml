@@ -1,0 +1,15 @@
+#backup nslcd.conf with date append on filename
+
+---
+- hosts: infra
+  user: yourusername
+
+  tasks:
+   - name: Backup nslcd.conf before editing
+     set_fact: date="{{lookup('pipe','date \"+%Y-%m-%d\"')}}"   
+     # nslcd.conf_2017-11-30
+   - copy:
+       remote_src: yes
+       src: /path/to/nslcd.conf
+       dest: /path/to/nslcd.conf_{{date}}
+
